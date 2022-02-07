@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import AuthRouter from "./routers/AuthRouter.js";
 import cors from "cors";
 import globalErrorHandler from "./controller/ErrorController.js";
+import AppError from "./util/AppError.js";
 
 const app = express();
 app.use(cors());

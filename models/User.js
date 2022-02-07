@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 import validator from "validator";
+import crypto from "crypto";
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -19,6 +20,10 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: [true, "Please enter a password"],
+  },
+  verified: {
+    type: Boolean,
+    default: false,
   },
 });
 

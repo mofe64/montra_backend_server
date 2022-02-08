@@ -114,8 +114,8 @@ export const authenticate = catchAsync(async (req, res, next) => {
 
 export const deleteUser = catchAsync(async (req, res, next) => {
   const id = req.params.id;
-  const res = await User.findByIdAndDelete(id);
-  if (!res) {
+  const user = await User.findByIdAndDelete(id);
+  if (!user) {
     return next(new AppError("No use found with that id"));
   }
   res.status(204).json({});

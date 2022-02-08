@@ -111,3 +111,12 @@ export const authenticate = catchAsync(async (req, res, next) => {
   req.user = currentUser;
   next();
 });
+
+export const deleteUser = catchAsync(async (req, res, next) => {
+  const id = req.params.id;
+  const res = await User.findByIdAndDelete(id);
+  if (!res) {
+    return next(new AppError("No use found with that id"));
+  }
+  res.status(204).json({});
+});

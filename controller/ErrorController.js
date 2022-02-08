@@ -36,6 +36,8 @@ const sendErrorInDevelopment = (err, req, res) => {
 
 const sendErrorInProduction = (err, req, res) => {
   if (err.isOperational) {
+    console.log("operational error");
+    console.log(err);
     return res.status(err.statusCode).json({
       status: err.status,
       message: err.message,
@@ -43,6 +45,7 @@ const sendErrorInProduction = (err, req, res) => {
   }
 
   //internal errors
+  console.log("internal err");
   console.log(err);
   return res.status(500).json({
     status: "error",

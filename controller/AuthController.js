@@ -19,9 +19,7 @@ const createSendToken = (user, statusCode, res) => {
   res.status(statusCode).json({
     status: "success",
     token,
-    data: {
-      user,
-    },
+    user,
   });
 };
 
@@ -79,11 +77,9 @@ export const verify = catchAsync(async (req, res, next) => {
     return next(new AppError("User id provided does not match token", 400));
   }
   userToVerify.verified = true;
-  await userToVerify.save();
+  const user = await userToVerify.save();
   await Token.findByIdAndDelete(userToken._id);
-  res.status(200).json({
-    success: true,
-  });
+  createSendToken(user, 200, res);
 });
 
 export const authenticate = catchAsync(async (req, res, next) => {

@@ -32,6 +32,15 @@ accountSchema.set("toJSON", {
     return ret;
   },
 });
+const autoPopulateFunc = function (next) {
+  this.populate({
+    path: "owner",
+    select: "-password -role -__v",
+  });
+  next();
+};
+
+accountSchema.pre("findOne", autoPopulateFunc).pre("find", autoPopulateFunc);
 
 const Account = mongoose.model("Account", accountSchema);
 

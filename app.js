@@ -12,7 +12,7 @@ app.use(express.json({ limit: "10kb" }));
 app.use(bodyParser.urlencoded({ limit: "10kb", extended: false }));
 
 app.use("/api/v1/auth", AuthRouter);
-app.use("/api/v1/account", AccountRouter);
+app.use("/api/v1/accounts", AccountRouter);
 
 app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));

@@ -25,7 +25,7 @@ export const createAccount = catchAsync(async (req, res, next) => {
   res.status(201).json({
     success: true,
     id: account._id,
-    balance: account.balance,
+    balance: account.balance.toString(),
   });
 });
 

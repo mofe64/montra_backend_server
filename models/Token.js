@@ -7,7 +7,7 @@ const tokenSchema = new mongoose.Schema({
     required: [true, "Token must have a value"],
   },
   user: {
-    type: mongoose.Schema.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: "User",
     required: [true, "Token must have a user"],
   },

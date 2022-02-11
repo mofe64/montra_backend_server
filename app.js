@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import AuthRouter from "./routers/AuthRouter.js";
+import AccountRouter from "./routers/AccountRouter.js";
 import cors from "cors";
 import globalErrorHandler from "./controller/ErrorController.js";
 import AppError from "./util/AppError.js";
@@ -11,6 +12,7 @@ app.use(express.json({ limit: "10kb" }));
 app.use(bodyParser.urlencoded({ limit: "10kb", extended: false }));
 
 app.use("/api/v1/auth", AuthRouter);
+app.use("/api/v1/account", AccountRouter);
 
 app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));

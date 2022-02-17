@@ -17,7 +17,7 @@ export const createAccount = catchAsync(async (req, res, next) => {
   }
 
   const account = await Account.create({
-    id,
+    _id: id,
     name,
     balance,
     owner: userId,

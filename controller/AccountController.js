@@ -6,7 +6,7 @@ import mongoose from "mongoose";
 
 export const createAccount = catchAsync(async (req, res, next) => {
   const { id, name, balance, userId } = req.body;
-  const customId = mongoose.Types.ObjectId(id);
+
   if (!name) {
     return next(
       new AppError("name must be provided when creating an account", 400)
@@ -19,7 +19,7 @@ export const createAccount = catchAsync(async (req, res, next) => {
   }
 
   const account = await Account.create({
-    _id: customId,
+    _id: id,
     name,
     balance,
     owner: userId,

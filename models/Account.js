@@ -1,6 +1,9 @@
 import mongoose from "mongoose";
 
 const accountSchema = new mongoose.Schema({
+  _id: {
+    type: String,
+  },
   name: {
     type: String,
     required: [true, "Please provide the account name"],

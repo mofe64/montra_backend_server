@@ -3,6 +3,9 @@ import mongoose from "mongoose";
 const accountSchema = new mongoose.Schema({
   _id: {
     type: String,
+    required: [true, "account must have an id"],
+    unique: true,
+    index: true,
   },
   name: {
     type: String,

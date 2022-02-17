@@ -4,7 +4,7 @@ import AppError from "../util/AppError.js";
 import User from "../models/User.js";
 
 export const createAccount = catchAsync(async (req, res, next) => {
-  const { name, balance, userId } = req.body;
+  const { id, name, balance, userId } = req.body;
   if (!name) {
     return next(
       new AppError("name must be provided when creating an account", 400)
@@ -17,6 +17,7 @@ export const createAccount = catchAsync(async (req, res, next) => {
   }
 
   const account = await Account.create({
+    id,
     name,
     balance,
     owner: userId,
